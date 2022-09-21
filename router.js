@@ -1,5 +1,6 @@
+import { signup } from './controllers/authentication.js'
+
 export default function(app) {
-    app.get('/', (req, res, next) => {
-        res.send(['water', 'phone', 'paper'])
-    })
+    app.post('/signup', signup)
+    
 }
