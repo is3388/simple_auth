@@ -6,8 +6,10 @@ import { Strategy, ExtractJwt } from 'passport-jwt'
 
 // set up options for JWT Strategy - strategy is passport plugin for authenticating a user
 // tell passport to look at request header to find the key
+const passportService = () => {
 const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+    //jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('JWT'),
     secretOrKey: process.env.JWT_SECRET
 }
 
@@ -24,10 +26,10 @@ const jwtLogin = new Strategy(jwtOptions, function(payload, done) {
             return done(err, false) // err is whatever error, false refers to user object
         }
         if (user) {
-            return done(null, user)
+            done(null, user)
         }
         else { // cannot find the user
-            return done(null, false)
+             done(null, false)
         }
     })
 
@@ -35,3 +37,6 @@ const jwtLogin = new Strategy(jwtOptions, function(payload, done) {
 
 // tell passport to use this strategy
 passport.use(jwtLogin)
+}
+
+export default passportService

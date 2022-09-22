@@ -5,9 +5,7 @@ function tokenForUser(user) {
     const timestamp = new Date().getTime()
     // sub is jwt property called subject meaning which token belongs to
     // first argument is the payload
-    return jwt.encode({ sub: user.id, iat: timestamp}, process.env.JWT_SECRET, {
-        expiresIn: '30d'
-    })
+    return jwt.encode({ sub: user.id, iat: timestamp}, process.env.JWT_SECRET)
 }
 
 const signup = function (req, res, next) {
