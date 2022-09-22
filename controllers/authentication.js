@@ -1,4 +1,14 @@
 import User from '../models/User.js'
+import jwt from 'jwt-simple'
+
+function tokenForUser(user) {
+    const timestamp = new Date().getTime()
+    // sub is jwt property called subject meaning which token belongs to
+    // first argument is the payload
+    return jwt.encode({ sub: user.id, iat: timestamp}, process.env.JWT_SECRET, {
+        expiresIn: '30d'
+    })
+}
 
 const signup = function (req, res, next) {
     const {email, password} = req.body
@@ -24,7 +34,7 @@ const signup = function (req, res, next) {
         user.save(function (err) {
             if (err) {
                 return next(err)
-            }res.status(201).json({success: true})
+            }res.status(201).json({token: tokenForUser(user)})
 
         })
     })    
