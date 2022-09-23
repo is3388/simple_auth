@@ -45,12 +45,21 @@ userSchema.pre('save', function(next) {
 })
 
 /* to generate a jwt-simple token
-UserSchema.methods.generateJwt = function () {
+userSchema.methods.generateJwt = function () {
  const user = this;
  const timestamp = new Date().getTime();
  
  return jwt.encode({ sub: user.id, iat: timestamp }, config.jwt.secret);
 }; */
+
+userSchema.methods.comparePassword = function (submittedPassword, callback) {
+    bcrypt.compare(submittedPassword, this.password, function(err, isMatch) {
+        if (err) {
+            return callback(err)
+        }
+        callback(null, isMatch) // isMatch is true or false
+    })
+}
 
 // create a model class called User and user is collection name
 const User = mongoose.model('user', userSchema)

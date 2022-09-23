@@ -3,6 +3,7 @@ import http from 'http'
 import morgan from 'morgan'
 import router from './router.js'
 import connectDB from './config/db.js'
+import passport from 'passport'
 import dotenv from 'dotenv' 
 dotenv.config()
 
@@ -12,8 +13,10 @@ const app = express()
 
 // App set up
 app.use(morgan('combined')) // logging incoming requests for debugging purpose
+app.use(express.urlencoded({extended: true}))
 app.use(express.json()) // parsing incoming requests to JSON
 // app.use(bodyParser.json({type: '*/*'}))
+app.use(passport.initialize())
 router(app)
 
 

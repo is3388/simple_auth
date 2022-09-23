@@ -1,5 +1,7 @@
 import User from '../models/User.js'
 import jwt from 'jwt-simple'
+import dotenv from 'dotenv' 
+dotenv.config()
 
 function tokenForUser(user) {
     const timestamp = new Date().getTime()
@@ -38,4 +40,9 @@ const signup = function (req, res, next) {
     })    
 }
 
-export { signup }
+const signin = function (req, res, next) {
+    // passport send back req.user via middleware requireSignin
+    res.send({token: tokenForUser(req.user)})
+}
+
+export { signup, signin }
