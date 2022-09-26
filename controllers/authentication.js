@@ -1,7 +1,7 @@
 import User from '../models/User.js'
 import jwt from 'jwt-simple'
-import dotenv from 'dotenv' 
-dotenv.config()
+//import dotenv from 'dotenv' 
+//dotenv.config()
 
 function tokenForUser(user) {
     const timestamp = new Date().getTime()
