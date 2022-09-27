@@ -3,7 +3,7 @@
 import { AUTH_USER, AUTH_ERROR } from "../actions/types"
 
 // errorMessage is not empty if sign in with invalid email/password or sign up with email already exists
-const INITIAL_STATE = { authenticated: '',
+const INITIAL_STATE = { authenticated: localStorage.getItem('token'),
                         errorMessage: ''}
 
 const authReducer = (state=INITIAL_STATE, action) => {

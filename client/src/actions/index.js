@@ -8,6 +8,7 @@ export const signup = (formProps, callback) => async(dispatch) => {
         type: AUTH_USER,
         payload: data.token
     })
+    localStorage.setItem('token', data.token)
     callback()
     }
     catch(err) {
@@ -19,5 +20,13 @@ export const signup = (formProps, callback) => async(dispatch) => {
             type: AUTH_ERROR, 
             payload: err.response.data.error
         }) */
+    }
+}
+
+export const signout = () => {
+    localStorage.removeItem('token')
+    return { 
+        type: AUTH_USER,
+        payload: ''
     }
 }
