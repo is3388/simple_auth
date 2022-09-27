@@ -5,6 +5,7 @@ import Welcome from './components/Welcome'
 import Feature from './components/Feature'
 import Signup from './components/auth/Signup'
 import Signout from './components/auth/Signout'
+import Signin from './components/auth/Signin'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -24,6 +25,7 @@ ReactDOM.render(
         <Routes>
             <Route path='/' exact element={<Welcome />} />
             <Route path='/signup' element={<Signup />} />
+            <Route path='/signin' element={<Signin />} />
             <Route path='/signout' element={<Signout />} />
             <Route path='/feature' element={<Feature />} />
         </Routes>
