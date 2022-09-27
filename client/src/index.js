@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
 import Welcome from './components/Welcome'
+import Feature from './components/Feature'
 import Signup from './components/auth/Signup'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux'
@@ -19,8 +20,9 @@ ReactDOM.render(
 <BrowserRouter>
     <App>
         <Routes>
-            <Route path='/' exact element={<Welcome/>} />
-            <Route path='/signup' element={<Signup/>} />
+            <Route path='/' exact element={<Welcome />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/feature' element={<Feature />} />
         </Routes>
     </App>
 </BrowserRouter>
