@@ -8,9 +8,11 @@ const Signout = () => {
     useEffect(() => {
         dispatch(signout())
     }, [dispatch])
-    
+
     return (
-        <div>Sorry to see you leave!</div>
+        <div>
+            <h3 style={{marginLeft: '10px'}}>Sorry to see you leave!</h3>
+        </div>
     )
 }
 
