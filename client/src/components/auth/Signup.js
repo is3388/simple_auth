@@ -29,7 +29,7 @@ const Signup = ({handleSubmit}) => {
                 </label>
                 <Field name='password' type='password' component='input' autoComplete='none'/>
             </fieldset>
-            <div>{errorMessage}</div>
+            { errorMessage && (<div>{errorMessage}</div>) }
             <button>Sign Up</button>
         </form>
     )

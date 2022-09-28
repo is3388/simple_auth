@@ -11,10 +11,11 @@ const Signin = ({handleSubmit}) => {
     const navigate = useNavigate()
     const onSubmitHandler = (formProps) => {
         //console.log(formProps)
-        dispatch(signin(formProps, () => {
+            dispatch(signin(formProps, () => {
             navigate('/feature')
         }))
     }
+
     return (
         <form onSubmit={handleSubmit(onSubmitHandler)}>
             <fieldset>
@@ -29,7 +30,7 @@ const Signin = ({handleSubmit}) => {
                 </label>
                 <Field name='password' type='password' component='input' autoComplete='none'/>
             </fieldset>
-            <div>{errorMessage}</div>
+            { errorMessage && (<div>{errorMessage}</div>) }
             <button>Sign In</button>
         </form>
     )
