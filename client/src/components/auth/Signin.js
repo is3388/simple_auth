@@ -14,11 +14,11 @@ const Signin = ({handleSubmit}) => {
             dispatch(signin(formProps, () => {
             navigate('/feature')
         }))
-        dispatch(reset('myForm'))
+        dispatch(reset('signin'))
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmitHandler)} name='myForm'>
+        <form onSubmit={handleSubmit(onSubmitHandler)}>
             <fieldset>
                 <label>
                     Email
