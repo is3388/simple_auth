@@ -1,5 +1,5 @@
 import React from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, reset } from 'redux-form'
 import { signin } from '../../actions'
 import {useDispatch, useSelector} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -14,10 +14,11 @@ const Signin = ({handleSubmit}) => {
             dispatch(signin(formProps, () => {
             navigate('/feature')
         }))
+        dispatch(reset('myForm'))
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
+        <form onSubmit={handleSubmit(onSubmitHandler)} name='myForm'>
             <fieldset>
                 <label>
                     Email
