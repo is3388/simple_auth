@@ -20,6 +20,9 @@ export const signup = (formProps, callback) => async(dispatch) => {
             type: AUTH_ERROR, 
             payload: err.response.data.error
         }) */
+        setTimeout(() => {
+            window.location.href = '/signin'
+            }, 5000)
     }
 }
 
@@ -46,5 +49,8 @@ export const signin = (formProps, callback) => async (dispatch) => {
                 type: AUTH_ERROR, 
                 payload: 'Invalid login credentials'
             })
+            setTimeout(() => {
+                window.location.href = '/signin'
+                }, 5000)
         }
 }
